@@ -1,13 +1,14 @@
 #!/usr/bin/python
 
 import os
-import pickle
-import re
+import string
 import sys
 import numpy as np
 
-sys.path.append("../text_learning/")
 
+
+sys.path.append("../tools/")
+from noun_phrase import getNounPhrases
 
 f_list  = open("..\\add1.txt", "r")
 
@@ -51,16 +52,31 @@ for path in f_list:
 
             email.close()
 
-            names = getNamedEntities(path)
-            for x in names:
-                names_list.append(x)
+            nouns = getNounPhrases(path)
+            for x in nouns:
+                nouns_list.append(x)
         
 print n, "emails processed"
 
+dic = {}
+all_words = []
 for email in word_data:
-    
+    words = email.split()
+    for x in words:
+        x = x.decode("utf8", 'ignore')
+        all_words.append(x)
+for word in all_words:
+    if word in nouns_list:
+        dic.update({word: 1})
+    else:
+        dic.update({word: 0})
 
-    
+f = open("nounphrase.txt", "w")
+f.write(str(dic))
+f.close()
+
+print "File Ready"
+
     
 
 

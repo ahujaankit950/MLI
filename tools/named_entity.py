@@ -4,14 +4,15 @@ import os
 import sys
 import nltk
 
+
 def getNamedEntities(p):
     
     def nameEntity(p):
         f = open(p, "r")
         f.seek(0)
         text = f.read()
-
-        sentences = nltk.sent_tokenize(text)
+        
+        sentences = nltk.sent_tokenize(text.decode("utf8", 'ignore'))
         sentences = [nltk.word_tokenize(sent) for sent in sentences]
         sentences = [nltk.pos_tag(sent) for sent in sentences]
         tagged_sent = [nltk.ne_chunk(sent, binary=True) for sent in sentences]
@@ -21,7 +22,7 @@ def getNamedEntities(p):
 
 
     ne_tagged = nameEntity(p)
-    print ne_tagged[90]
+    #print ne_tagged[90]
 
     named_entity = []
     for sent in ne_tagged:
