@@ -99,5 +99,9 @@ fil = open("term_freq.txt", 'w')
 fil.write(str(score_dic))
 fil.close()
 
+fil = open("bag.txt", 'w')
+fil.write(str(bag.toarray()))
+fil.close()
+
 print "File Ready"
 

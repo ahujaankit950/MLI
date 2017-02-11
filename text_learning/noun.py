@@ -8,7 +8,7 @@ import numpy as np
 
 
 sys.path.append("../tools/")
-from named_entity import getNamedEntities
+from noun_phrase import getNounPhrases
 
 f_list  = open("..\\add1.txt", "r")
 
@@ -52,9 +52,9 @@ for path in f_list:
 
             email.close()
 
-            names = getNamedEntities(path)
-            for x in names:
-                names_list.append(x)
+            nouns = getNounPhrases(path)
+            for x in nouns:
+                nouns_list.append(x)
         
 print n, "emails processed"
 
@@ -66,12 +66,12 @@ for email in word_data:
         x = x.decode("utf8", 'ignore')
         all_words.append(x)
 for word in all_words:
-    if word in names_list:
+    if word in nouns_list:
         dic.update({word: 1})
     else:
         dic.update({word: 0})
 
-f = open("detectnames.txt", "w")
+f = open("nounphrase.txt", "w")
 f.write(str(dic))
 f.close()
 
