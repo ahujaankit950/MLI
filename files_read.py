@@ -29,9 +29,11 @@ def read_all(adds):
 		
 	return all_text
 
-def remove_punct(str):
-	text = str.translate(string.maketrans("", ""), string.punctuation)
-	return text
+def remove_punct(all_text):
+	for str in all_text:
+		text = str.translate(string.maketrans("", ""), string.punctuation)
+		nopunctext.append(text)
+	return nopunctext
 
 def id_words(all_text):
 	mail = 0
@@ -51,5 +53,16 @@ def id_words(all_text):
 #text = ["text is data type data", "hitesh chutiya hai hitesh", "divyansh is an working ass hole ass" ]
 #ar = id_words(text)
 
-
+def feat_arr(function, mails, arrK) :               #mails is list of mails(string), arrk is array of dict of every mail
+    mailNo=0
+    listO = []
+    for mail in mails :
+        dict = function(mail)
+        dict1 = arrK[mailNo]
+        for key in dict.keys() :
+            iden = dict1[key]
+            list1 = [mailNo, iden, dict[key]]
+            listO.append(list1)
+        mailNo = mailNo+1
+    return listO 
 

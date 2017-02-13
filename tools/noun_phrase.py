@@ -1,16 +1,11 @@
 #!/usr/bin/python
 
-import os
-import sys
 import nltk
 
-p = "test.txt"
-
     
-def namePhrase(p):
-    f = open(p, "r")
-    f.seek(0)
-    text = f.read()
+def nounPhrase(t):
+    
+    text = t
     sentences = nltk.sent_tokenize(text)
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
     sentences = [nltk.pos_tag(sent) for sent in sentences]
@@ -24,9 +19,9 @@ def namePhrase(p):
     return tagged_sent
 
 
-def getNamedPhrases(p):
+def getNounPhrases(text):
     
-    np_tagged = namePhrase(p)
+    np_tagged = nounPhrase(text)
     #print np_tagged[90]
 
     noun_phrases = []
