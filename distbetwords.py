@@ -19,9 +19,11 @@ def adddistance(distance,dict,word) :
         l.append(distance)
 
 
+def disBetWords(text):
 
-def dist_bet_words(list):   
-    
+    file = text
+    list = file.split()
+    # print "list is: ",list
     dict = {}
 
     i = 0
@@ -54,5 +56,5 @@ def dist_bet_words(list):
         rms_list.append(rms)
 
     rms_dict = {word: rms for word, rms in zip(dict.keys(), rms_list)}
-    
+
     return rms_dict
