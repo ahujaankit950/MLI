@@ -10,16 +10,16 @@ def wordpos(file) :
             dict[word] = i+1
     return dict
 
-def fun(mails,arrK) :               #mails is list of mails(string), arrk is array of dict of every mail
+def fun(function, mails, arrK) :               #mails is list of mails(string), arrk is array of dict of every mail
     mailNo=0
     listO = []
     for mail in mails :
         file = mail.split()
-        dict = wordpos(mail)
-        for word in file :
+        dict = function(mail)
+        for key in dict.keys() :
             dict1 = arrK[mailNo]
-            key = dict1[word]
-            list1 = [mailNo,key,dict[word]]
+            iden = dict1[key]
+            list1 = [mailNo, iden, dict[key]]
             listO.append(list1)
         mailNo = mailNo+1
-    return listO                          #listO of the form:- [mailno,key,feature]
+    return listO             
