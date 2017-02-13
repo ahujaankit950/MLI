@@ -11,6 +11,8 @@ import wordpositionlist
 import distbetwords
 import get_word_length
 import tfidf
+import capitalisation
+import wikifreq
 
 
 all_text = ["my name is Anup it is", "is Divyansh Goel in an working ass hole ass Divyansh", "is this working right this"]
@@ -54,5 +56,13 @@ print dic_arr
 #print tfidf_dic
 #print tfidf_arr
 
+#caps_dic = [capitalisation.capitalWords(text) for text in all_text]
+#caps_arr = files_read.feat_arr(capitalisation.capitalWords, all_text, dic_arr)
+#print caps_dic
+#print caps_arr
 
+#wiki_dic = [wikifreq.wikifrequncy(text) for text in all_text]
+#wiki_arr = files_read.feat_arr(wikifreq.wikifrequncy, all_text, dic_arr)
+#print wiki_dic
+#print wiki_arr
 
